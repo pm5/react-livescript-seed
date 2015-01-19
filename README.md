@@ -5,6 +5,7 @@ React project seed with LiveScript.  Things included:
 * gulp
 * bower
 * react
+* flux
 * browserify
 * livereload
 
