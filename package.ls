@@ -12,7 +12,6 @@ dependencies:
   "bower": "^1.3.12"
   "connect-livereload": "^0.5.2"
   "flux": "^2.0.1"
-  "events": "^1.0.2"
   "express": "^4.10.6"
   "gulp": "^3.8.10"
   "gulp-bower": "0.0.7"
