@@ -8,6 +8,7 @@ React project seed with LiveScript.  Things included:
 * flux
 * browserify
 * livereload
+* (many more...)
 
 Usage
 -----
