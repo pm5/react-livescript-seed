@@ -28,6 +28,17 @@ gulp.task 'js:vendor' <[bower]> ->
     .pipe gulp.dest '_public/js'
     .pipe livereload!
 
+gulp.task 'js' <[js:app js:vendor]> ->
+
+require! <[gulp-stylus]>
+
+gulp.task 'css:app' ->
+  gulp.src 'app/styles/*.styl'
+    .pipe gulp-stylus!
+    .pipe gulp-concat 'app.css'
+    .pipe gulp.dest '_public/css'
+    .pipe livereload!
+
 gulp.task 'css:vendor' <[bower]> ->
   gulp.src main-bower-files!
     .pipe gulp-filter (.path is /\.css$/)
@@ -35,23 +46,19 @@ gulp.task 'css:vendor' <[bower]> ->
     .pipe gulp.dest '_public/css'
     .pipe livereload!
 
-gulp.task 'css' <[css:vendor]> ->
-  gulp.src 'app/**/*.css'
-    .pipe gulp-concat 'app.css'
-    .pipe gulp.dest '_public/css'
-    .pipe livereload!
+gulp.task 'css' <[css:app css:vendor]> ->
 
 gulp.task 'template' ->
   gulp.src 'app/**/*.html'
     .pipe gulp.dest '_public'
     .pipe livereload!
 
-gulp.task 'build' <[bower js:vendor js:app css template]> ->
+gulp.task 'build' <[bower js css template]> ->
 
 gulp.task 'watch' ->
   livereload-server.listen livereload-port, ->
     gulp.watch ['app/**/*.ls'] <[js:app]>
-    gulp.watch ['app/**/*.css'] <[css]>
+    gulp.watch ['app/**/*.stylus'] <[css:app]>
     gulp.watch ['app/**/*.html'] <[template]>
 
 gulp.task 'dev' <[build watch]> ->
