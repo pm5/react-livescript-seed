@@ -3,12 +3,11 @@ React project seed with LiveScript.  Things included:
 
 * LiveScript
 * gulp
-* bower
 * react
 * flux
+* stylus
 * browserify
 * livereload
-* (many more...)
 
 Usage
 -----
