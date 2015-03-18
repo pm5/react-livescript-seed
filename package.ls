@@ -4,7 +4,7 @@ authors:
   * 'Pomin Wu (pm5) <pomin5@gmail.com>'
 license: 'MIT'
 scripts:
-  republish: 'lsc -cj package.ls && lsc -cj bower.ls'
+  republish: 'lsc -cj package.ls && lsc -cj bower.ls && lsc -cpb webpack.config.ls > webpack.config.js'
   build: 'gulp build'
   dev: 'gulp dev'
 private: true
