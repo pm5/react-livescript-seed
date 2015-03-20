@@ -10,5 +10,7 @@ module.exports = do
         loader: "livescript-loader"
       * test: /\.styl$/
         loader: "style-loader!stylus-loader"
+      * test: /\.(png|jpg|gif)$/
+        loader: "url-loader?limit=8192"
   resolve:
-    extensions: <[.js .ls]>
+    extensions: [""] ++ <[.js .ls]>
