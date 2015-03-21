@@ -26,6 +26,7 @@ dependencies:
   "liveify": "^1.3.1"
   "livescript-loader": "^0.1.3"
   "main-bower-files": "^2.4.1"
+  "react": "^0.13.1"
   "style-loader": "^0.8.3"
   "stylus-loader": "^1.0.0"
   "tiny-lr": "^0.1.4"

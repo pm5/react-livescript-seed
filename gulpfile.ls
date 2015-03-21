@@ -4,32 +4,6 @@ livereload-server = tiny-lr!
 livereload-port = 35729
 livereload = -> gulp-livereload livereload-server
 
-require! <[gulp-livescript gulp-browserify liveify gulp-uglify]>
-
-gulp.task 'js:app' ->
-  gulp.src 'app/js/app.ls'
-    .pipe gulp-livescript bare: true
-    .pipe gulp-browserify do
-      transform: <[liveify]>
-      extensions: <[.ls]>
-    #.pipe gulp-uglify!
-    .pipe gulp.dest '_public/js'
-    .pipe livereload!
-
-require! <[gulp-bower main-bower-files gulp-filter]>
-
-gulp.task 'bower' ->
-  gulp-bower!
-
-gulp.task 'js:vendor' <[bower]> ->
-  gulp.src main-bower-files!
-    .pipe gulp-filter (.path is /\.js$/)
-    .pipe gulp-concat 'vendor.js'
-    .pipe gulp.dest '_public/js'
-    .pipe livereload!
-
-gulp.task 'js' <[js:app js:vendor]> ->
-
 require! <[gulp-stylus]>
 
 gulp.task 'css:app' ->
@@ -39,25 +13,17 @@ gulp.task 'css:app' ->
     .pipe gulp.dest '_public/css'
     .pipe livereload!
 
-gulp.task 'css:vendor' <[bower]> ->
-  gulp.src main-bower-files!
-    .pipe gulp-filter (.path is /\.css$/)
-    .pipe gulp-concat 'vendor.css'
-    .pipe gulp.dest '_public/css'
-    .pipe livereload!
-
-gulp.task 'css' <[css:app css:vendor]> ->
+gulp.task 'css' <[css:app]> ->
 
 gulp.task 'template' ->
   gulp.src 'app/**/*.html'
     .pipe gulp.dest '_public'
     .pipe livereload!
 
-gulp.task 'build' <[bower js css template]> ->
+gulp.task 'build' <[css template]> ->
 
 gulp.task 'watch' ->
   livereload-server.listen livereload-port, ->
-    gulp.watch ['app/**/*.ls'] <[js:app]>
     gulp.watch ['app/**/*.stylus'] <[css:app]>
     gulp.watch ['app/**/*.html'] <[template]>
 

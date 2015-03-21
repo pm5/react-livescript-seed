@@ -1,5 +1,6 @@
 "use strict"
 
+React = require "react"
 {div, input} = React.DOM
 
 module.exports = Panel = React.createClass do

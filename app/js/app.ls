@@ -1,5 +1,6 @@
 "use strict"
 
+React = require "react"
 {div} = React.DOM
 
 require! <[./stores/ExampleStore ./actions/AppActionCreators]>
